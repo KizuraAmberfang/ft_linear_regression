@@ -44,9 +44,10 @@ def denorm(theta):
 
 def writeTheta(theta):
 	try:
-		with open("theta.csv", "x") as file:
+		with open("theta.csv", "w") as file:
 			file.write("theta0,theta1\n")
 			file.write(str(theta[0]) + "," + str(theta[1]) + "\n")
+			print("Saved: \"theta.csv\"")
 	except:
 		print("Error: could not create \"theta.csv\".")
 
@@ -58,6 +59,10 @@ normData = normalize(dataFile, mins, maxs)
 theta = train(normData)
 theta = denorm(theta)
 writeTheta(theta)
-plt.plot(dataFile[dataFile.columns.values[0]], dataFile[dataFile.columns.values[1]], "r*")
-plt.plot([mins[0], maxs[0]], [calculate(theta, mins[0]), calculate(theta, maxs[0])])
+ax = plt.subplot()
+ax.set_xlabel(dataFile.columns.values[0])
+ax.set_ylabel(dataFile.columns.values[1])
+ax.set_title("data value and linear regression")
+ax.plot(dataFile[dataFile.columns.values[0]], dataFile[dataFile.columns.values[1]], "r*")
+ax.plot([mins[0], maxs[0]], [calculate(theta, mins[0]), calculate(theta, maxs[0])])
 plt.show()
