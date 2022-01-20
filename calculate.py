@@ -1,4 +1,4 @@
 import pandas as pd
 
-dataFile = pd.read_csv("data.csv")
-print(dataFile)
+dataFile = pd.read_csv("theta.csv")
+print(type(dataFile))
