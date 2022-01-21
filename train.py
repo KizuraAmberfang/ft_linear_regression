@@ -47,22 +47,36 @@ def writeTheta(theta):
 		with open("theta.csv", "w") as file:
 			file.write("theta0,theta1\n")
 			file.write(str(theta[0]) + "," + str(theta[1]) + "\n")
-			print("Saved: \"theta.csv\"")
+			print("\033[92mSaved: \"theta.csv\"\033[0m")
 	except:
-		print("Error: could not create \"theta.csv\".")
+		print("\033[31mFatal: could not create \"theta.csv\".\033[0m")
 
+def validate(data):
+	try: 
+		for row in data.values:
+			float(row[0])
+			float(row[1])
+		return True
+	except:
+		return False
 
-dataFile = pd.read_csv("data.csv")
-mins = dataFile.min()
-maxs = dataFile.max()
-normData = normalize(dataFile, mins, maxs)
-theta = train(normData)
-theta = denorm(theta)
-writeTheta(theta)
-ax = plt.subplot()
-ax.set_xlabel(dataFile.columns.values[0])
-ax.set_ylabel(dataFile.columns.values[1])
-ax.set_title("data value and linear regression")
-ax.plot(dataFile[dataFile.columns.values[0]], dataFile[dataFile.columns.values[1]], "r*")
-ax.plot([mins[0], maxs[0]], [calculate(theta, mins[0]), calculate(theta, maxs[0])])
-plt.show()
+try:
+	dataFile = pd.read_csv("data.csv")
+	if (validate(dataFile)):
+		mins = dataFile.min()
+		maxs = dataFile.max()
+		normData = normalize(dataFile, mins, maxs)
+		theta = train(normData)
+		theta = denorm(theta)
+		writeTheta(theta)
+		ax = plt.subplot()
+		ax.set_xlabel(dataFile.columns.values[0])
+		ax.set_ylabel(dataFile.columns.values[1])
+		ax.set_title("data value and linear regression")
+		ax.plot(dataFile[dataFile.columns.values[0]], dataFile[dataFile.columns.values[1]], "r*")
+		ax.plot([mins[0], maxs[0]], [calculate(theta, mins[0]), calculate(theta, maxs[0])])
+		plt.show()
+	else:
+		print("\033[31mFatal: \"data.csv\" is corrupted!\033[0m")
+except:
+	print("\033[31mFatal: \"data.csv\" not found, we can not train the alghorithm!\033[0m")
