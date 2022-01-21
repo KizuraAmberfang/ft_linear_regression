@@ -42,5 +42,5 @@ Stessa cosa la applichiamo per trovare il punto B:
 
 A questo punto otteniamo la retta passante per i due punti:
 
-<img src="https://render.githubusercontent.com/render/math?math=/frac{y - y_A}{y_B - y_A}">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{y - y_A}{y_B - y_A} = \frac{x - x_A}{x_B - x_A}">
 
