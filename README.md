@@ -60,8 +60,18 @@ Eliminiamo i fattori comuni nel secondo addendo della parte destra dell'uguaglia
 
 Riorganizziamo l'equazione per farla apparire come la forma canonica della retta:
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{y}{\overline{\theta_1}(max(Y) - min(Y))} = \frac{x}{max(X) - min(X)} - \frac{min(X)}{max(X) - min(X)} %2B \frac{\overline{\theta_0}}{\overline{\theta_1}} - \frac{min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{y}{\overline{\theta_1}(max(Y) - min(Y))} = \frac{x}{max(X) - min(X)} - \frac{min(X)}{max(X) - min(X)} %2B \frac{\overline{\theta_0}}{\overline{\theta_1}} %2B \frac{min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
 
 Moltiplichiamo ambo i membri per il denominatore della parte sinistra dell'equazione:
 
-<img src="https://render.githubusercontent.com/render/math?math=y = \frac{x\overline{\theta_1}(max(Y) - min(Y))}{max(X) - min(X)} - \frac{min(X)\overline{\theta_1}(max(Y) - min(Y))}{max(X) - min(X)} %2B \frac{\overline{\theta_0}\overline{\theta_1}(max(Y) - min(Y))}{\overline{\theta_1}} - \frac{min(Y)\overline{\theta_1}(max(Y) - min(Y))}{\overline{\theta_1}(max(Y) - min(Y))}">
+<img src="https://render.githubusercontent.com/render/math?math=y = x\overline{\theta_1}\frac{(max(Y) - min(Y))}{max(X) - min(X)} - \frac{min(X)\overline{\theta_1}(max(Y) - min(Y))}{max(X) - min(X)} %2B \frac{\overline{\theta_0}\overline{\theta_1}(max(Y) - min(Y))}{\overline{\theta_1}} %2B \frac{min(Y)\overline{\theta_1}(max(Y) - min(Y))}{\overline{\theta_1}(max(Y) - min(Y))}">
+
+Riduciamo il riducibile:
+
+<img src="https://render.githubusercontent.com/render/math?math=y = x\overline{\theta_1}\frac{(max(Y) - min(Y))}{max(X) - min(X)} - \frac{min(X)\overline{\theta_1}(max(Y) - min(Y))}{max(X) - min(X)} %2B \overline{\theta_0}(max(Y) - min(Y)) %2B min(Y)">
+
+Da questa equazione otteniamo il coefficiente angolare <img src="https://render.githubusercontent.com/render/math?math=\theta_1"> e l'intercetta <img src="https://render.githubusercontent.com/render/math?math=\theta_0">:
+
+<img src="https://render.githubusercontent.com/render/math?math=\theta_1 = \overline{\theta_1}\frac{(max(Y) - min(Y))}{max(X) - min(X)}">
+
+<img src="https://render.githubusercontent.com/render/math?math=\theta_0 = \overline{\theta_0}(max(Y) - min(Y)) %2B min(Y) - min(X)\overline{\theta_1}\frac{max(Y) - min(Y)}{max(X) - min(X)}">
