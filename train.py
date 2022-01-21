@@ -1,3 +1,4 @@
+from cmath import inf
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -25,15 +26,27 @@ def sumWeightError(data, theta):
         sum += (calculate(theta, row[0]) - row[1]) * row[0]
     return sum
 
-def train(data):
-    theta = [0, 0]
-    lr = 1/100
-    nRow = data.count()[0]
-    for i in range(10000):
-        tempTheta0 = theta[0] - (lr * (1/nRow) * sumError(data, theta))
-        tempTheta1 = theta[1] - (lr * (1/nRow) * sumWeightError(data, theta))
-        theta = [tempTheta0, tempTheta1]
-    return theta
+def calcErr(a, b, data, nRow, avg):
+	err = 0
+	for row in data.values:
+		err += abs(row[0] - a - b * row[0])
+	return (err / nRow) / avg
+
+def train(data, avg):
+	theta = [0, 0]
+	lr = 1/100
+	nRow = data.count()[0]
+	for i in range(100):
+		tempTheta0 = theta[0] - (lr * (1/nRow) * sumError(data, theta))
+		tempTheta1 = theta[1] - (lr * (1/nRow) * sumWeightError(data, theta))
+		theta = [tempTheta0, tempTheta1]
+		errArr.append([
+			i,
+			calcErr(tempTheta0, tempTheta1, data, nRow, avg)
+		])
+	global errData
+	errData = pd.DataFrame(errArr, columns=["iter", "err"])
+	return theta
 
 def denorm(theta):
     rangeX = maxs[0] - mins[0]
@@ -60,13 +73,15 @@ def validate(data):
 	except:
 		return False
 
+errArr = []
 try:
 	dataFile = pd.read_csv("data.csv")
 	if (validate(dataFile)):
 		mins = dataFile.min()
 		maxs = dataFile.max()
+		average = dataFile.mean()[1]
 		normData = normalize(dataFile, mins, maxs)
-		theta = train(normData)
+		theta = train(normData, average)
 		theta = denorm(theta)
 		writeTheta(theta)
 		ax = plt.subplot()
@@ -75,6 +90,7 @@ try:
 		ax.set_title("data value and linear regression")
 		ax.plot(dataFile[dataFile.columns.values[0]], dataFile[dataFile.columns.values[1]], "r*")
 		ax.plot([mins[0], maxs[0]], [calculate(theta, mins[0]), calculate(theta, maxs[0])])
+		# ax.plot(errData["iter"], errData["err"])
 		plt.show()
 	else:
 		print("\033[31mFatal: \"data.csv\" is corrupted!\033[0m")
