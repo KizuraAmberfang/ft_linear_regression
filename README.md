@@ -38,9 +38,26 @@ Stessa cosa la applichiamo per trovare il punto B:
 
 <img src="https://render.githubusercontent.com/render/math?math=y = (\overline{\theta_0} %2B \overline{\theta_1})(max(Y) - min(Y)) %2B min(Y)">
 
-<img src="https://render.githubusercontent.com/render/math?math=B = (max(X), (\overline{\theta_0} %2B \overline{\theta_1})(max(Y) - min(Y)) %2B min(Y)">
+<img src="https://render.githubusercontent.com/render/math?math=B = (max(X), (\overline{\theta_0} %2B \overline{\theta_1})(max(Y) - min(Y)) %2B min(Y))">
 
 A questo punto otteniamo la retta passante per i due punti:
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{y - y_A}{y_B - y_A} = \frac{x - x_A}{x_B - x_A}">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{x - x_A}{x_B - x_A} = \frac{y - y_A}{y_B - y_A}">
 
+<img src="https://render.githubusercontent.com/render/math?math=\frac{x - min(X)}{max(X) - min(X)} = \frac{y - \overline{\theta_0}(max(Y) - min(Y)) %2B min(Y)}{(\overline{\theta_0} %2B \overline{\theta_1})(max(Y) - min(Y)) %2B min(Y) - \overline{\theta_0}(max(Y) - min(Y)) - min(Y)}"> 
+
+Elimiamo i fattori equivalenti dal denominatore della parte destra dell'uguaglianza: 
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{x - min(X)}{max(X) - min(X)} = \frac{y - \overline{\theta_0}(max(Y) - min(Y)) %2B min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
+
+Separiamo le somme al numeratore:
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{x}{max(X) - min(X)} - \frac{min(X)}{max(X) - min(X)} = \frac{y}{\overline{\theta_1}(max(Y) - min(Y))} - \frac{\overline{\theta_0}(max(Y) - min(Y))}{\overline{\theta_1}(max(Y) - min(Y))} %2B \frac{min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
+
+Eliminiamo i fattori comuni nel secondo addendo della parte destra dell'uguaglianza: 
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{x}{max(X) - min(X)} - \frac{min(X)}{max(X) - min(X)} = \frac{y}{\overline{\theta_1}(max(Y) - min(Y))} - \frac{\overline{\theta_0}}{\overline{\theta_1}} %2B \frac{min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
+
+Riorganizziamo l'equazione per farla apparire come la forma canonica della retta:
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{y}{\overline{\theta_1}(max(Y) - min(Y))} = \frac{x}{max(X) - min(X)} - \frac{min(X)}{max(X) - min(X)} %2B \frac{\overline{\theta_0}}{\overline{\theta_1}} - \frac{min(Y)}{\overline{\theta_1}(max(Y) - min(Y))}">
