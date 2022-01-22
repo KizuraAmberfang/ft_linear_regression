@@ -1,36 +1,39 @@
-from numpy import isin
 import pandas as pd
 
-end = False
-try:
-	theta = pd.read_csv("data/theta.csv")
-	theta0 = theta[theta.columns.values[0]]
-	theta1 = theta[theta.columns.values[1]]
-	if (not(isinstance(theta0.values[0], float)) or not(isinstance(theta1.values[0], float))):
-		print("\033[93mWarning: file \"theta.csv\" corrupted, setting thetas to 0.\033[0m")
-		dataSet = {
-  			'theta0': [0],
-  			'theta1': [0]
-			}
-		theta = pd.DataFrame(dataSet)
-except:
-	print("\033[93mWarning: could not open \"theta.csv\", setting thetas to 0.\033[0m")
-	dataSet = {
-  		'theta0': [0],
-  		'theta1': [0]
-		}
-	theta = pd.DataFrame(dataSet)
+class linReg: 
+	def __init__(self) -> None:
+		self.__getThetas()
+		pass
 
-theta0 = theta[theta.columns.values[0]]
-theta1 = theta[theta.columns.values[1]]
-while (end == False):
-	try: 
-		x = float(input("Enter a value: "))
-		if (x < 0):
-			print("\033[93mWarning: You have to give a positive number!\033[0m")
-		else:
-			y = theta0.values[0] + theta1.values[0] * x
-			end = True
-			print("Estimated price is " + str(y))
-	except:
-		print("\033[93mWarning: You have to enter a number!\033[0m")
+	def __getThetas(self):
+		try:
+			__theta = pd.read_csv("data/theta.csv")
+			self.__theta0 = __theta[__theta.columns.values[0]]
+			self.__theta1 = __theta[__theta.columns.values[1]]
+			if (not(isinstance(self.__theta0.values[0], float)) or not(isinstance(self.__theta1.values[0], float))):
+				print("\033[93mWarning: file \"theta.csv\" corrupted, setting thetas to 0.\033[0m")
+				dataSet = {
+					'theta0': [0],
+					'theta1': [0]
+					}
+				__theta = pd.DataFrame(dataSet)
+		except:
+			print("\033[93mWarning: could not open \"theta.csv\", setting thetas to 0.\033[0m")
+			dataSet = {
+				'theta0': [0],
+				'theta1': [0]
+				}
+			__theta = pd.DataFrame(dataSet)
+		self.__theta0 = __theta[__theta.columns.values[0]]
+		self.__theta1 = __theta[__theta.columns.values[1]]
+
+	def calc(self):
+		end = False
+		while (end == False):
+			try: 
+				x = float(input("Enter a value: "))
+				y = self.__theta0.values[0] + self.__theta1.values[0] * x
+				end = True
+				return x, y
+			except:
+				print("\033[93mWarning: You have to enter a number!\033[0m")

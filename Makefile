@@ -1,7 +1,7 @@
 all:	train calc
 
 calc:
-		python3 srcs/calculate.py
+		python3 main.py
 
 train:
-		python3 srcs/train.py
+		python3 maintrainer.py
