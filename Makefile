@@ -1,7 +1,7 @@
-all:	calculate
+all:	train calc
 
-calculate:
-		python3 calculate.py
+calc:
+		python3 srcs/calculate.py
 
 train:
-		python3 train.py
+		python3 srcs/train.py
