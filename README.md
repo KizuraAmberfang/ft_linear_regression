@@ -1,5 +1,7 @@
 # ft_linear_regression
 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/gdi-lore/ft_linear_regression)](https://github.com/JaeSeoKim/badge42) FT_LINEAR_REGRESSION
+
 ## Denormalizzazione della retta
 
 Una volta ottenuta la retta normalizzata dobbiamo occuparci di ottenere la retta per i dati reali. Per farlo ho deciso di ottenere la retta interpolante il punto di minimo (A) e di massimo dei dati (B). 
